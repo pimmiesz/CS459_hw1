@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  .button {
+    background-color: white ;
+    color: black;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 14px 40px;
+  }
+  .button:hover {
+      background-color: black;
+      color: white;
+  }
+  .center{
+    /* height:600px;
+    weight:300px; */
+
+    /* margin: 5%; */
+    padding: 5%;
+    text-align: center;
+
+
+
+ }
+  .userp{
+    width: 150px;
+    height:150px;
+}
+
+.bg{
+  /* background-color:#48D1CC; */
+  background-repeat: no-repeat;
+  /* min-height:100%; */
+
+  background-size: cover;
+}
+.bg-white{
+  background-color: white ;
+  opacity: 0.8;
+  margin: 10%;
+
+
+}
+
+
+</style>
+
+  <title>Car</title>
+</head>
+<body class="bg"background="../img/bg.jpg">
+  <div class="bg-white">
+  <div class="center">
+
+ {% if user.is_authenticated %}
+  <h1>Hi {{ user.username }}!<h1>
+  <img class="userp" src="../img/userpic.png" width="150px" height="150px"><br>
+
+  <a href="{% url 'profile'%}"><button class="button">Go to profile.</button></a>
+    <h2>Car List</h2>
+  <!-- {% block content %} -->
+<table border="2px solid #fffff" style="margin-left:10%;">
+   {% for car in object_list %}
+
+  <!-- <li>{{car.model}} {{car.detail}} {{car.price}}</li> -->
+
+
+    <td align="middle"  border="p2x solid #fffff" width="180px">
+      <img style="padding:10px" src='{{car.image.url}}' width="180px" height="150px" >
+      <div  style="padding:10px;" text-align="center">
+      <h4>{{car.name}}</h4>Detail: {{car.detail}}<br>Price: {{car.price}}</div>
+    </td>
+
+
+  <!-- {% empty %} -->
+
+  {% endfor %}
+</table>
+  <!-- {% endblock %} -->
+  {% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a>
+ {% endif %}
+</div>
+</div>
+</body>
+</html>

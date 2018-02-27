@@ -1,0 +1,83 @@
+
+
+<!DOCTYPE html>
+<html >
+<style>
+.button {
+  background-color: white ;
+  color: black;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 3px 20px;
+  margin: 10px;
+
+}
+.button:hover {
+    background-color: black;
+    color: white;
+}
+.center{
+  padding: 5%;
+  text-align: center;
+
+
+}
+img{
+  width: 180px;
+  height:180px;
+}
+.bg{
+  /* background-color:#48D1CC; */
+  background-repeat: no-repeat;
+  /* min-height:100%; */
+
+  background-size: cover;
+}
+.bg-white{
+  background-color: white ;
+  opacity: 0.8;
+  margin: 10%;
+}
+
+
+</style>
+<head>
+  {% load static %}
+  <title>Rent</title>
+  <!-- <link rel="stylesheet" type="text/css" href="./style.css"> -->
+
+</head>
+<body class="bg"background="../img/bg.jpg">
+  <div class="bg-white">
+<div class="center">
+
+{% if user.is_authenticated %}
+	 <h1> Hi {{ user.username }}! </h1>
+   {% load static %}
+    <img src="../img/userpic.png"/><br>
+
+
+	  <a href="{% url 'profile'%}"><button class="button" ><h3>Go to profile.</h3></button></a>
+    <h2>Rent</h2>
+	  {% csrf_token %}
+    <!-- {% load crispy_forms_tags %}
+    {% crispy form %} -->
+		<!-- {{ form.car}} -->
+		<!-- {{ form.fee.label_tag }}
+		{{ form.fee }} -->
+
+	  {% load crispy_forms_tags %}
+	  {% crispy form %}
+
+
+
+
+	{% else %}
+		 <p>You are not logged in</p>
+  		 <a href="{% url 'login' %}">login</a>
+	{% endif %}
+
+</div>
+</div>
+</body>
+</html>

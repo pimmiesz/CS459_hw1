@@ -1,0 +1,57 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<style>
+
+.center{
+  padding: 5%;
+  text-align: center;
+}
+img{
+  width: 180px;
+  height:180px;
+}
+/* body{
+  padding: 15%;
+  background-color:#48D1CC;
+  text-align: center;
+
+} */
+.bg{
+  /* background-color:#48D1CC; */
+  background-repeat: no-repeat;
+  /* min-height:100%; */
+
+  background-size: cover;
+}
+.bg-white{
+  background-color: white ;
+  opacity: 0.8;
+  margin: 10%;
+
+
+}
+
+
+
+</style>
+<head>
+  <title>Create Form</title>
+</head>
+<body class="bg"background="../img/bg.jpg">
+  <div class="bg-white">
+    <div class="center">
+  <img src="../img/userpic.png"/>
+  {% if user.is_authenticated %}
+    <h1>Hi {{ user.username }}!</h1>
+
+  {% else %}
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}">login</a>
+  {% endif %}
+</div>
+  <div class="bg-white">
+</body>
+</html>
